@@ -22,7 +22,9 @@ You can enter a digraph into your document by using the ``matplotlib`` macro::
            shadow=True, startangle=90)
    ax1.axis('equal')
 
-   plt.savefig(sys.stdout.buffer)
+   # Save the figure to stdout instead of just plotting it directly
+   # for Jirafs
+   plt.savefig(sys.stdout.buffer) 
    </jirafs:matplotlib>
 
 or::
@@ -30,16 +32,6 @@ or::
     <jirafs:matplotlib src="name-of-matplotlib-source.py" />
 
 Upon submission to Jira, a file will automatically be generated, and your markup will be replaced with an embedded image showing your rendered graph.
-
-Use
----
-
-Just enter your python source just as you usually would, except instead
-of rendering your graph with ``pyplot.plot()``, instead::
-
-   import sys
-   ...
-   pyplot.savefig(sys.stdout.buffer)
 
 If you're using the ``src`` option and would like to detect when to render
 a graph into the GUI versus when to render it to ``sys.stdout.buffer``, you
