@@ -17,7 +17,10 @@ class MatplotlibMixin(object):
         data: str,
         python_bin: Optional[str] = None,
     ):
-        with tempfile.NamedTemporaryFile(suffix='.py') as outf:
+        with tempfile.NamedTemporaryFile(
+            dir=self.ticketfolder.path,
+            suffix='.py'
+        ) as outf:
             outf.write(data.encode('utf-8'))
 
             config = self.get_configuration()
