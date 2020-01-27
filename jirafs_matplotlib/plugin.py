@@ -84,7 +84,7 @@ class Matplotlib(MatplotlibMixin, ImageMacroPlugin):
     ):
         python_bin = attrs.get('python', 'python')
 
-        return format, self._build_output(
+        return 'png', self._build_output(
             data,
             python_bin=python_bin,
         )
