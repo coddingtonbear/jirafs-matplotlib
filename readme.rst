@@ -1,11 +1,17 @@
-Jirafs-Matplotlib
-=================
+Jirafs matplotlib Macro
+=======================
 
-Automatically executes and embeds your matplotlib-generated graph
-into your comment or field in Jira.
+This Jirafs plugin adds a macro allowing you to easily embed charts generated with Python's Matplotlib chart generation library.
 
-Use
----
+.. image:: http://coddingtonbear-public.s3.amazonaws.com/github/jirafs-matplotlib/demo_v1.gif
+
+and the comment posted will appear in Jira as:
+
+.. image:: http://coddingtonbear-public.s3.amazonaws.com/github/jirafs-matplotlib/demo_v1_jira.png
+
+
+Quickstart
+----------
 
 You can enter a digraph into your document by using the ``matplotlib`` macro::
 
@@ -33,19 +39,6 @@ or::
 
 Upon submission to Jira, a file will automatically be generated, and your markup will be replaced with an embedded image showing your rendered graph.
 
-If you're using the ``src`` option and would like to detect when to render
-a graph into the GUI versus when to render it to ``sys.stdout.buffer``, you
-can use the presence of the ``JIRAFS_RENDER`` environment variable in a manner
-such as this::
-
-   import sys
-   import os
-   ...
-   if os.environ['JIRAFS_RENDER']:
-       pyplot.savefig(sys.stdout.buffer)
-   else:
-       pyplot.plot()
-
 Options
 -------
 
@@ -59,6 +52,22 @@ any of the following attributes:
   rendering your graph content.  Note that you can set a path to the Python
   binary to use on the global or issue level by setting the configuration
   key `matplotlib.python_bin`.
+
+Tips
+----
+
+If you're using the ``src`` option and would like to detect when to render
+a graph into the GUI versus when to render it to ``sys.stdout.buffer``, you
+can use the presence of the ``JIRAFS_RENDER`` environment variable in a manner
+such as this::
+
+   import sys
+   import os
+   ...
+   if os.environ['JIRAFS_RENDER']:
+       pyplot.savefig(sys.stdout.buffer)
+   else:
+       pyplot.plot()
 
 Installation
 ------------
