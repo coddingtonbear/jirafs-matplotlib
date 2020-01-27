@@ -64,7 +64,7 @@ such as this::
    import sys
    import os
    ...
-   if os.environ['JIRAFS_RENDER']:
+   if 'JIRAFS_RENDER' in os.environ:
        pyplot.savefig(sys.stdout.buffer)
    else:
        pyplot.plot()
