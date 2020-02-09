@@ -1,10 +1,9 @@
-from importlib.util import find_spec
 import os
 import subprocess
 import tempfile
 from typing import Optional
 
-from jirafs.plugin import ImageMacroPlugin, PluginValidationError, PluginOperationError
+from jirafs.plugin import ImageMacroPlugin, PluginOperationError
 from jirafs.types import JirafsMacroAttributes
 
 
@@ -48,13 +47,6 @@ class MatplotlibMixin(object):
             )
 
         return stdout
-
-    def validate(self):
-        if find_spec("matplotlib") is None:
-            raise PluginValidationError(
-                "%s requires the python matplotlib library to be installed."
-                % (self.entrypoint_name,)
-            )
 
 
 class Matplotlib(MatplotlibMixin, ImageMacroPlugin):
