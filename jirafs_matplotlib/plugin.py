@@ -1,3 +1,4 @@
+from importlib.util import find_spec
 import os
 import subprocess
 import tempfile
@@ -49,9 +50,7 @@ class MatplotlibMixin(object):
         return stdout
 
     def validate(self):
-        try:
-            import matplotlib  # noqa
-        except ImportError:
+        if find_spec("matplotlib") is None:
             raise PluginValidationError(
                 "%s requires the python matplotlib library to be installed."
                 % (self.entrypoint_name,)
